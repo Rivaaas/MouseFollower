@@ -18,9 +18,12 @@ function App() {
     if (enabled) {
       window.addEventListener("pointermove", handleMove)
     }
+
+    //Cleanup
+    //Cuando el componente se desmonta
     return () => {
-      setPosition({x:0,y:0})
-      window.removeEventListener("pointermove",handleMove)
+      setPosition({ x: 0, y: 0 })
+      window.removeEventListener("pointermove", handleMove)
     }
 
 
@@ -28,26 +31,29 @@ function App() {
 
 
   return (
-    <main>
-      <div style={{
-        position: 'absolute',
-        backgroundColor: '#090a01',
-        borderRadius: '50%',
-        opacity: 0.8,
-        border: "2px solid",
-        pointerEvents: 'none',
-        left: -20,
-        top: -20,
-        width: 40,
-        height: 40,
-        transform: `translate(${position.x}px, ${position.y}px)`
-      }}
-
-      />
+    <>
+     <div style={{
+      position: 'absolute',
+      backgroundColor: '#090a01',
+      borderRadius: '50%',
+      opacity: 0.8,
+      border: "2px solid",
+      pointerEvents: 'none',
+      left: -20,
+      top: -20,
+      width: 40,
+      height: 40,
+      transform: `translate(${position.x}px, ${position.y}px)`
+    }}
+    />
+    <div>
       <button onClick={() => setEnabled(!enabled)}>
         {enabled ? "desactivar " : "activar "}
         seguir puntero</button>
-    </main>
+      </div>
+       
+      
+    </>
   )
 }
 
